@@ -1,0 +1,163 @@
+/* Общие стили */
+body {
+    background-color: #0f1117;
+    color: #fdb950;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Заголовки */
+h1, h2 {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 28px;
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+/* Кнопки */
+.cta-button {
+    display: block;
+    background: #fdb950;
+    color: #0f1117;
+    font-size: 18px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.cta-button:hover {
+    background: #fc8c00;
+    transform: scale(1.05);
+}
+
+/* Контейнер для функций на главной */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.feature {
+    text-align: center;
+    flex: 1 1 250px;
+    max-width: 300px;
+    text-decoration: none;
+    color: #fdb950;
+    padding: 15px;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.feature img {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.feature:hover {
+    background-color: rgba(253, 185, 80, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(253, 185, 80, 0.5);
+}
+
+/* Форма регистрации */
+.register-form {
+    max-width: 350px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.register-form label {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    align-self: flex-start;
+}
+
+.register-form input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #fdb950;
+    border-radius: 5px;
+    background: #0f1117;
+    color: white;
+}
+
+.register-form input:focus {
+    border-color: #fc8c00;
+    outline: none;
+}
+
+.checkbox {
+    font-size: 14px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    line-height: 1.4;
+    flex-wrap: wrap; 
+}
+
+.checkbox input {
+    margin-right: 10px;
+    transform: scale(1.2);
+    flex-shrink: 0;
+}
+
+.checkbox label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.checkbox a {
+    color: #fc8c00;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px dashed #fc8c00;
+    margin-left: 5px;
+}
+
+.checkbox a:hover {
+    border-bottom: 1px solid #fc8c00;
+}
+
+
+.cta-button {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature {
+        max-width: 100%;
+    }
+}
