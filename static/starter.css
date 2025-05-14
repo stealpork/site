@@ -10,18 +10,18 @@ body {
 }
 
 h1 {
-    font-size: 28px;
-    margin: 20px 0;
+    font-size: 2.33vw;
+    margin: 1.67% 0;
 }
 
 .site-title {
-    font-size: 20px;
+    font-size: 1.67vw;
     font-weight: bold;
-    padding: 20px;
+    padding: 1.67%;
 }
 
 .main-heading {
-    font-size: 28px;
+    font-size: 2.33vw;
     font-weight: bold;
 }
 
@@ -30,70 +30,65 @@ h1 {
 }
 
 .sub-heading {
-    font-size: 18px;
+    font-size: 1.47vw;
     font-weight: bold;
-    margin-top: -10px;
+    margin-top: -0.67%;
 }
 
 .features {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-top: 30px;
+    gap: 3.33vw;
+    margin-top: 2.67%;
     flex-wrap: wrap;
 }
 
 .feature {
     text-align: center;
-    flex: 1 1 200px;
-    max-width: 300px;
+    flex: 1 1 26.67vw;
+    max-width: 40vw;
     text-decoration: none;
     color: #fdb950;
-    padding: 15px;
+    padding: 2%;
     border-radius: 10px;
-    transition: background 1s, transform 0.2s;
+    transition: transform 0.2s, border 0.2s;
+    border: 2px solid transparent;
 }
-
 .feature:hover {
-    background-color: #fc8b0088;
     transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(253, 185, 80, 0.5);
+    border: 0.5vw solid #fdb950;
 }
 
 .feature img {
-    width: 100px;
+    width: 6.67vw;
     height: auto;
 }
 
 .feature p {
-    font-size: 16px;
+    font-size: 1.47vw;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 1.33%;
 }
 
-/* Кнопка */
 .cta-button {
     display: inline-block;
-    background-color: #fdb950;
-    color: #0f1117;
+    background: transparent;
+    border: 0.2vw solid #fdb950;
+    color: #fdb950;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 2vw;
     font-weight: bold;
-    padding: 15px 30px;
-    border-radius: 10px;
-    margin-top: 30px;
+    padding: 1.2vw 2.4vw;
+    border-radius: 1vw;
+    margin-top: 3.67%;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    box-shadow: 0 4px 10px rgba(253, 185, 80, 0.5);
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
 }
-
 .cta-button:hover {
-    background-color: #fc8c00;
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(253, 140, 0, 0.6);
+    background-color: #fdb950;
+    color: #101820;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     .features {
         flex-direction: column;
@@ -101,12 +96,12 @@ h1 {
     }
 
     .feature {
-        max-width: 80%;
+        max-width: 53.33%;
     }
 
     .cta-button {
-        width: 80%;
-        padding: 15px;
-        font-size: 16px;
+        width: 53.33%;
+        padding: 2%;
+        font-size: 1.47vw;
     }
 }
