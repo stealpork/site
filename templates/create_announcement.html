@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать объявление</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='announcement.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="site-title">Repirok</h1>
+        <nav>
+            <ul>
+            <li><a href="{{ url_for('main_page') }}">Найти репетитора</a></li>
+            <li><a href="{{ url_for('chats')}}">Чаты</a></li>
+            <li><a href="{{ url_for('user_profile', username=current_user.username) }}">Профиль</a></li>
+                <li class="profile-icon">
+                    <img src="{{ url_for('static', filename='users_avatars/' + current_user.image_file) }}" alt="Profile Picture" width="200">
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-wrapper">
+        <form class="form-container" method="POST" enctype="multipart/form-data">
+            <div class="form-left">
+                <label for="title">Заголовок</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="description">Описание</label>
+                <textarea id="description" name="description" required></textarea>
+
+                <label for="price">Цена</label>
+                <input type="number" id="price" name="price" required>
+
+                <label for="location">Место проведения занятия</label>
+                <input type="text" id="location" name="location">
+            </div>
+
+            <div class="form-center">
+                <div class="avatar-placeholder"></div>
+                <label for="file" class="photo-button">Добавить фотографию</label>
+                <input type="file" id="file" name="file" style="display:none;" required>
+
+                <button type="submit" class="save-button">Создать объявление</button>
+                <a href="{{ url_for('user_profile', username=us) }}" class="back-button">Назад</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

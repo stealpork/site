@@ -12,3 +12,9 @@ class RegisterForm(FlaskForm):
     )
     agreement = BooleanField('Я принимаю пользовательское соглашение', validators=[DataRequired()])
     submit = SubmitField('Зарегистрироваться')
+
+
+class LoginForm(FlaskForm):
+    username = StringField('Логин', validators=[DataRequired(), Length(max=64)])
+    password = PasswordField('Пароль', validators=[DataRequired(), Length(min=6, max=80)])
+    submit = SubmitField('Войти')

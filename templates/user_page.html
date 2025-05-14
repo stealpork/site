@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя {{ us }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='user_page.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1 class="site-title">Repirok</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main_page') }}">Найти репетитора</a></li>
+                <li><a href="#">Чаты</a></li>
+                <li><a href="{{ url_for('user_profile', username=current_user.username) }}">Профиль</a></li>
+                <li class="profile-icon"><img src="{{ url_for('static', filename='users_avatars/' + current_user.image_file) }}" alt="Профиль"></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <div class="profile-info">
+            <label>Имя</label>
+            <input type="text" value="{{ us }}" readonly>
+
+            <label>Специализация</label>
+            <input type="text" value="{{ spec }}" readonly>
+            <label>Возраст</label>
+            <input type="number" value="{{ age }}" readonly>
+
+            <label>Обо мне</label>
+            <textarea readonly>{{ about }}</textarea>
+        </div>
+
+        <div class="profile-image-section">
+            <div class="profile-avatar">
+                <img src="{{ url_for('static', filename=default_avatar_url) }}"
+                    alt="Аватар пользователя">
+            </div>
+            <a  href="{{ url_for('look_ann', username=us) }}" class="cta-button">Посмотреть объявления</a>
+        </div>
+    </main>
+
+</body>
+</html>

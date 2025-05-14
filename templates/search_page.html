@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск репетитора</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='search_page.css') }}">
+    <style>
+        /* CSS for vertical scrolling */
+        .scrollable-cards {
+            overflow-y: auto;
+            max-height: 400px;
+            padding: 10px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="site-title">Repirok</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main_page') }}">Найти репетитора</a></li> <!-- Update this to new URL -->
+                <li><a href="{{ url_for('chats')}}">Чаты</a></li>
+                <li>
+                <a href="{{ url_for('user_profile', username=current_user.username) }}">Профиль</a>
+                </li>
+                <li class="profile-icon">
+                <img src="{{ url_for('static', filename='users_avatars/' + current_user.image_file) }}" alt="Profile Picture" width="200">
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="search-container">
+        <aside class="filters">
+            <div class="filter-box">
+                <label>Цена</label>
+                <form method="GET" action="{{ url_for('main_page') }}">  <!-- action now has the correct URL -->
+                    <div class="price-inputs">
+                        <input type="number" name="price_from" placeholder="От" value="{{ price_from or '' }}">
+                        <input type="number" name="price_to" placeholder="До" value="{{ price_to or '' }}">
+                    </div>
+
+                    <label>Сортировка</label>
+                    <div class="sorting-options">
+                        <label><input type="radio" name="sort_by" value="default" {% if sort_by == 'default' or not sort_by %}checked{% endif %}> По умолчанию</label>
+                        <label><input type="radio" name="sort_by" value="price_asc" {% if sort_by == 'price_asc' %}checked{% endif %}> Дешевле</label>
+                        <label><input type="radio" name="sort_by" value="price_desc" {% if sort_by == 'price_desc' %}checked{% endif %}> Дороже</label>
+                    </div>
+
+                    <input type="text" class="search-bar" placeholder="Поиск..." name="search_term" value="{{ search_term or '' }}">
+                    <button type="submit">Применить фильтры</button>
+                </form>
+            </div>
+        </aside>
+
+        <section class="results">
+
+            <div class="scrollable-cards">
+                {% for announcement in announcements %}
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='users_avatars/' + announcement.image_file) }}" alt="Фото">
+                        <p>
+                            <strong>{{ announcement.name }}</strong><br>
+                            {{ announcement.info }}<br>
+                            {{ announcement.price }}₽/час
+                        </p>
+                        <a href="{{ url_for('view_announcement', announcement_id=announcement.id)}}" class="like_btn">Подробнее</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

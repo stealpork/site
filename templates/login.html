@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в аккаунт</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='registr.css') }}">
+</head>
+<body>
+
+    <h1>Вход в аккаунт</h1>
+
+    <form class="register-form" method="POST" action="{{ url_for('login') }}">
+        {{ form.csrf_token }}
+
+        {% if error %}  <!--  Просто проверяем, существует ли переменная error -->
+            <p class="errors">{{ error }}</p>  <!--  Отображаем значение переменной error -->
+        {% endif %}
+
+        <label for="username">{{ form.username.label }}</label>
+        {{ form.username(id="username", required=true) }}
+        {% if form.username.errors %}  <!-- Отображаем ошибки валидации поля username -->
+            <ul class="errors">
+                {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <label for="password">{{ form.password.label }}</label>
+        {{ form.password(id="password", required=true) }}
+        {% if form.password.errors %}  <!-- Отображаем ошибки валидации поля password -->
+            <ul class="errors">
+                {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <button type="submit" class="cta-button">Войти</button>
+
+        <p class="checkbox">
+            Нет аккаунта?
+            <a href="{{ url_for('register') }}" class="account-link">Зарегистрироваться</a>
+        </p>
+    </form>
+
+</body>
+</html>

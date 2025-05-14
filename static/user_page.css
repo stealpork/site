@@ -1,0 +1,152 @@
+body {
+    background-color: #101820;
+    color: #fdb950;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2% 5%;
+    min-height: 10vh;
+    background-color: #101820;
+    border-bottom: none;
+}
+
+.site-title {
+    font-size: 2vw;
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+}
+
+nav {
+    flex: 2;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fdb950;
+    font-weight: bold;
+    font-size: 1.75vw;
+}
+
+.profile-icon img {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    background: #fff;
+    padding: 0.5vw;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 5%;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+}
+
+.profile-info label {
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.profile-info input,
+.profile-info textarea {
+    width: 110%;
+    padding: 2%;
+    border: none;
+    border-bottom: 0.25vw solid #fdb950;
+    background: #202830;
+    color: #fff;
+    font-size: 2vw;
+}
+
+.profile-info textarea {
+    height: 25vh;
+    resize: none;
+}
+
+.profile-image-section {
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 25vw;
+    height: 25vw;
+    border-radius: 1vw;
+    background: #ccc;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-avatar img {
+    width: 110%;
+    height: 110%;
+    object-fit: cover;
+    border-radius: 1vw;
+}
+
+.cta-button {
+    display: block;
+    background: transparent;
+    border: 0.2vw solid #fdb950;
+    color: #fdb950;
+    padding: 0.6vw 1.2vw;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    width: 100%;
+    flex-shrink: 0;
+    text-align: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin: 0.5vw 0;
+}
+.cta-button:hover {
+    background-color: #fdb950;
+    color: #0d1117;
+}
+
+.edit-button {
+    display: block;
+    margin-top: 2%;
+    background: transparent;
+    color: #fdb950;
+    font-size: 1.5vw;
+    padding: 2% 4%;
+    border: 0.2vw solid #fdb950;
+    border-radius: 1vw;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    width: 115%;
+    text-align: center;
+}
+
+.edit-button:hover {
+    background-color: #fdb950;
+    color: #0d1117;
+}

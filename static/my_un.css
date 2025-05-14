@@ -1,0 +1,230 @@
+body {
+    margin: 0;
+    background-color: #101820;
+    color: #fdb950;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2% 5%;
+    background-color: #101820;
+}
+
+.site-title {
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fdb950;
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+
+.profile-icon img {
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    background: white;
+    padding: 0.3vw;
+}
+
+/* Основной контейнер */
+.main-container {
+    display: flex;
+    height: 85vh;
+    padding: 2vw;
+    gap: 2vw;
+}
+
+/* Левый блок */
+.left-block {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.back-btn {
+    background: #202830;
+    border: 0.2vw solid #fdb950;
+    color: #fdb950;
+    padding: 0.6vw 1.2vw;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    width: 100%;
+    flex-shrink: 0;
+    text-align: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin: 0.5vw 0;
+}
+
+.back-btn:hover {
+    background: #fdb950;
+    color: #101820;
+}
+
+.reviews-block {
+    flex: 1;
+    border: 0.2vw solid #fdb950;
+    border-radius: 1vw;
+    padding: 1vw;
+    overflow: hidden;
+    background-color: #202830;
+}
+
+.reviews-block h2 {
+    text-align: center;
+    font-size: 2vw;
+    margin-bottom: 1vw;
+}
+
+.reviews-scroll {
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #fdb950 #202830;
+}
+
+.reviews-scroll::-webkit-scrollbar {
+    width: 0.6vw;
+}
+.reviews-scroll::-webkit-scrollbar-thumb {
+    background: #fdb950;
+    border-radius: 1vw;
+}
+.review {
+    background: #101820; /* фон в тон всему сайту */
+    color: #fdb950;       /* нужный цвет текста */
+    padding: 2%;
+    border-radius: 1vw;
+    margin-bottom: 2%;
+    height: auto;
+    font-size: 1vw;       /* размер текста как в input/label */
+    line-height: 1.4;
+    font-weight: normal;
+}
+
+.review p {
+    font-size: 1vw;
+    color: #fdb950;
+    margin: 0;
+}
+
+.name_review {
+    color: #fdb950;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    font-size: 1vw;
+    font-weight: bold;
+    margin-bottom: 1%;
+    text-decoration: none;
+}
+
+
+
+/* Правый блок */
+.right-block {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ads-title {
+    text-align: center;
+    font-size: 2.2vw;
+    margin-bottom: 1vw;
+}
+
+.cards-scroll {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    scrollbar-width: thin;
+    scrollbar-color: #fdb950 #202830;
+    padding-right: 1vw;
+}
+
+.cards-scroll::-webkit-scrollbar {
+    width: 0.6vw;
+}
+.cards-scroll::-webkit-scrollbar-thumb {
+    background: #fdb950;
+    border-radius: 1vw;
+}
+
+/* Карточки объявлений */
+.card {
+    background-color: #202830;
+    border: 0.2vw solid #fdb950;
+    border-radius: 1vw;
+    padding: 1vw;
+    height: 12vw;
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+    color: white;
+    font-size: 1.2vw;
+}
+
+.card img {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 1vw;
+    object-fit: cover;
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-content h3 {
+    margin: 0 0 0.25vw;
+    font-size: 1.5vw;
+}
+
+.card-content p {
+    margin: 0 0 0.2vw;
+}
+
+
+
+.card-button {
+    display: flex;
+    padding: 0.7vw 1vw;
+    font-size: 1.1vw;
+    border: 0.2vw solid #fdb950;
+    background: transparent;
+    color: #fdb950;
+    border-radius: 1vw;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    align-self: flex-start; /* Выравниваем кнопку по левому краю */
+    margin-top: auto; /* Прижимаем кнопку к низу карточки */
+}
+.card-button:hover {
+    background: #fdb950;
+    color: #101820;
+}

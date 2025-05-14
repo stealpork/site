@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Объявления - {{ user.username }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='my_un.css') }}">
+</head>
+<body>
+
+<header>
+    <h1 class="site-title">Repirok</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('main_page') }}">Найти репетитора</a></li>
+            <li><a href="{{ url_for('chats')}}">Чаты</a></li>
+            <li><a href="{{ url_for('user_profile', username=current_user.username) }}">Профиль</a></li>
+            <li class="profile-icon">
+            <img src="{{ url_for('static', filename='users_avatars/' + current_user.image_file) }}" alt="Profile Picture" width="200">
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="main-container">
+    <div class="left-block">
+        <a href="{{ url_for('main_page') }}" class="back-btn">Назад</a>
+        <div class="reviews-block">
+            <h2>Отзывы</h2>
+            <div class="reviews-scroll">
+                {% if reviews %}
+                    {% for review in reviews %}
+                        <div class="review">
+                            <strong><span><a href="{{ url_for('user_profile', username=review.reviewer)}}" class="name_review">{{ review.reviewer }}</a></span></strong><br>
+                            {{ review.info }}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Нет отзывов.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="right-block">
+        <h2 class="ads-title">Объявления {{ user.username }}</h2>
+        <div class="cards-scroll">
+            {% if announcements %}
+                {% for announcement in announcements %}
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='users_avatars/' + announcement.image_file) }}" alt="Фото">
+                        <div class="card-content">
+                            <h3>{{ announcement.name }}</h3>
+                            {% if announcement.info|length > 50: %}
+                                <p>{{ announcement.info[0:50] + '...'}}</p>
+                            {% else %}
+                                <p>{{ announcement.info }}</p>
+                            {% endif %}
+                            <p><strong>{{ announcement.price }}₽/час</strong></p>
+                            <a href="{{ url_for('view_announcement', announcement_id=announcement.id)}}" class="card-button">Подробнее</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h2>Нет объявлений.</h2>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

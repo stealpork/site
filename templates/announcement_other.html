@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя - {{ user.username }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='announcement_other.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="site-title">Repirok</h1>
+        <nav>
+            <ul>
+            <li><a href="{{ url_for('main_page') }}">Найти репетитора</a></li>
+            <li><a href="{{ url_for('chats')}}">Чаты</a></li>
+            <li><a href="{{ url_for('user_profile', username=current_user.username) }}">Профиль</a></li>
+                <li class="profile-icon">
+                <img src="{{ url_for('static', filename='users_avatars/' + current_user.image_file) }}" alt="Profile Picture" width="40">
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-wrapper">
+        <div class="form-container">
+            <div class="form-left">
+                <a href="{{ url_for('user_profile', username=current_user.username) }}" class="back-button">Назад</a>
+
+                <label for="title">Название</label>
+                <input type="text" id="title" name="title" value="{{ announcement.name }}" readonly>
+
+                <label for="price">Цена</label>
+                <input type="text" id="price" name="price" value="{{ announcement.price }}" readonly>
+
+                <label for="location">Место проведения занятия</label>
+                <input type="text" id="location" name="location" value="{{ announcement.place }}" readonly>
+
+                <label for="additional_info">Дополнительная информация</label>
+                <textarea id="additional_info" name="additional_info" readonly>{{ announcement.info }}</textarea>
+            </div>
+
+            <div class="form-center">
+                <div class="avatar-placeholder">
+                    <img src="{{ url_for('static', filename='users_avatars/' + announcement.image_file) }}" alt="Profile Picture" width="200">
+                </div>
+                {% if user.username != current_user.username%}
+                    <a href="{{ url_for('create_or_open_chat', recipient_id=user.id)}}"class="photo-button">Написать</a>
+                {% endif%}
+                <a href="{{ url_for('look_ann', username=user.username)}}" class="save-button">Объявления пользователя</a>
+                {% if user.username != current_user.username%}
+                    <button class="leave-review-button">Оставить отзыв</button>
+                {% endif%}
+                {% if user.username == current_user.username%}
+                    <a href="{{ url_for('delete_ann', announcement_id=announcement.id)}}"class="leave-review-button">Удалить объявление</a>
+                {% endif%}
+            </div>
+
+            <div class="form-right">
+                <div class="reviews-block">
+                    <h2>Отзывы</h2>
+                    <div class="reviews-scroll">
+                        {% if reviews %}
+                            {% for review in reviews %}
+                                <div class="review">
+                                    <div class="review-header">
+                                        <span><a href="{{ url_for('user_profile', username=review.reviewer)}}" class="name_review">{{ review.reviewer }}</a></span>
+                                    </div>
+                                    <p>{{ review.info }}</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>Нет отзывов.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <h2>Ваш отзыв</h2>
+            <form method="POST" action="{{ url_for('submit_review', username=user.username) }}">
+                <textarea name="review_text" placeholder="Здесь печатать" required maxlength="100"></textarea>
+                <div class="modal-buttons">
+                    <button type="submit" class="submit-review">Оставить отзыв</button>
+                    <button type="button" class="close-modal">Назад</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('reviewModal');
+            const openModalBtn = document.querySelector('.leave-review-button');
+            const closeModalBtn = document.querySelector('.close-modal');
+
+            openModalBtn.addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

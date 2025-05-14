@@ -7,79 +7,75 @@ body {
     padding: 0;
     text-align: center;
 }
-
 /* Заголовки */
 h1, h2 {
     font-weight: bold;
 }
-
 h1 {
-    font-size: 28px;
-    margin: 20px 0;
+    font-size: 3.5vw;
+    margin: 2vw 0;
 }
-
 h2 {
-    font-size: 24px;
-    margin: 20px 0;
+    font-size: 3vw;
+    margin: 2vw 0;
 }
-
 /* Кнопки */
 .cta-button {
-    display: block;
-    background: #fdb950;
-    color: #0f1117;
-    font-size: 18px;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    background: transparent;
+    border: 0.2vw solid #fdb950;
+    color: #fdb950;
+    padding: 0.6vw 1.2vw;
+    border-radius: 1vw;
+    font-size: 1.5vw;
     font-weight: bold;
-    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    width: 8vw;
+    flex-shrink: 0;
+    text-align: center;
+    box-sizing: border-box;
+}
+.cta-button:hover {
+    background-color: #fdb950;
+    color: #101820;
 }
 
-.cta-button:hover {
-    background: #fc8c00;
-    transform: scale(1.05);
-}
 
 /* Контейнер для функций на главной */
 .features {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 2vw;
     flex-wrap: wrap;
-    margin-top: 30px;
+    margin-top: 3vw;
 }
-
 .feature {
     text-align: center;
-    flex: 1 1 250px;
-    max-width: 300px;
+    flex: 1 1 25vw;
+    max-width: 30vw;
     text-decoration: none;
     color: #fdb950;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 1.5vw;
+    border-radius: 1vw;
     transition: background 0.3s, transform 0.2s;
 }
-
 .feature img {
-    max-width: 100px;
-    margin-bottom: 10px;
+    max-width: 10vw;
+    margin-bottom: 1vw;
 }
-
 .feature:hover {
     background-color: rgba(253, 185, 80, 0.2);
     transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(253, 185, 80, 0.5);
+    box-shadow: 0 0.4vw 1vw rgba(253, 185, 80, 0.5);
 }
 
 /* Форма регистрации */
 .register-form {
-    max-width: 350px;
-    margin: 30px auto;
+    max-width: 35vw;
+    margin: 3vw auto;
     background: rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    border-radius: 10px;
+    padding: 2.5vw;
+    border-radius: 1vw;
     box-shadow: none;
     display: flex;
     flex-direction: column;
@@ -88,18 +84,18 @@ h2 {
 
 
 .register-form label {
-    font-size: 16px;
+    font-size: 1.6vw;
     font-weight: bold;
-    margin: 10px 0 5px;
+    margin: 1vw 0 0.5vw;
     align-self: flex-start;
 }
 
 .register-form input {
     width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid #fdb950;
-    border-radius: 5px;
+    padding: 1.2vw;
+    font-size: 1.6vw;
+    border: 0.2vw solid #fdb950;
+    border-radius: 0.5vw;
     background: #0f1117;
     color: white;
 }
@@ -110,17 +106,18 @@ h2 {
 }
 
 .checkbox {
-    font-size: 14px;
-    margin-top: 15px;
+    font-size: 1.4vw;
+    margin-top: 1.5vw;
     display: flex;
     align-items: center;
     text-align: left;
     line-height: 1.4;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .checkbox input {
-    margin-right: 10px;
+    margin-right: 1vw;
     transform: scale(1.2);
     flex-shrink: 0;
 }
@@ -135,19 +132,44 @@ h2 {
     color: #fc8c00;
     font-weight: bold;
     text-decoration: none;
-    border-bottom: 1px dashed #fc8c00;
-    margin-left: 5px;
+    border-bottom: 0.2vw dashed #fc8c00;
+    margin-left: 0.5vw;
 }
 
 .checkbox a:hover {
-    border-bottom: 1px solid #fc8c00;
+    color: #e66700;
+    border-bottom: 0.2vw dashed #fc8c00;
 }
 
+.account-link {
+    color: #fc8c00;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 0.2vw dashed #fc8c00;
+    margin-left: 0.5vw;
+}
+
+.account-link:hover {
+    color: #e66700;
+    border-bottom: 0.2vw dashed #fc8c00;
+}
 
 .cta-button {
-    margin-top: 20px;
+    margin-top: 2vw;
     width: 100%;
     text-align: center;
+}
+
+.errors {
+    list-style-type: none;
+    padding: 1vw;
+    margin: 1vw 0;
+    font-size: 1.4vw;
+    color: #ff4d4d;
+    background-color: rgba(255, 77, 77, 0.1);
+    border: 0.2vw solid #ff4d4d;
+    border-radius: 0.5vw;
+    text-align: left;
 }
 
 /* Адаптивность */

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Чаты</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='messanger.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="site-title">Repirok</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main_page') }}">Найти репетитора</a></li>
+                <li><a href="{{ url_for('chats')}}">Чаты</a></li>
+                <li><a href="{{ url_for('user_profile', username=current_user.username) }}">Профиль</a></li>
+                <li class="profile-icon">
+                    <img src="{{ url_for('static', filename='users_avatars/' + current_user.image_file) }}" alt="Profile Picture" width="200">
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="chat-list">
+            <h2>Чаты</h2>
+            {%if chats%}
+                {% for chat in chats %}
+                <div class="chat-card">
+                    <div class="chat-preview">
+                        {%if current_user.username == chat.user1_name%}
+                            <div class="chat-name">{{ chat.user2_name }}</div>
+                        {% else %}
+                            <div class="chat-name">{{ chat.user1_name }}</div>
+                        {% endif %}
+                    </div>
+                    <a href="{{ url_for('chat', chat_id=chat.id) }}">
+                        <button class="back-button">Открыть чат</button>
+                    </a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <h2>У вас нет чатов.</h2>
+            {% endif %}
+        </div>
+
+        <div class="chat-window">
+            {% if selected_chat %}
+                <div class="chat-messages">
+                    {%if messages%}
+                        {% for message in messages %}
+                            
+                            {%if message.sender_name == current_user.username%}
+                                <div class="us-right" >От {{message.sender_name}}</div>
+                                <div class="message message message-right">{{ message.content }}</div>
+                            {%else%}
+                                <div class="us-left" >От {{message.sender_name}}</div>
+                                <div class="message message message-left">{{ message.content }}</div>
+                            {%endif%}
+                        {% endfor %}
+                    {%else%}
+                        <h2>У вас нет сообщений. Напишите первым!</h2>
+                    {% endif %}
+                </div>
+                <form method="POST"  enctype="multipart/form-data" action="{{ url_for('send_message', chat_id=chat.id) }}" class="chat-input">
+                    <textarea name="content" placeholder="Здесь печатать..."></textarea>
+                    <button class="back-button">Отправить</button>
+                </form>
+            {% else %}
+                <p>Выберите чат, чтобы начать общение.</p>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>
